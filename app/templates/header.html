@@ -1,0 +1,26 @@
+<nav class="navbar navbar-inverse" ng-if="authService.isAnonymous()">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Issue Tracking System</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/login">Login</a></li>
+            <li><a href="#/register">Register</a></li>
+        </ul>
+    </div>
+</nav>
+
+<nav class="navbar navbar-inverse" ng-if="authService.isLoggedIn()">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">Issue Tracking System</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/">Dashboard</a></li>
+            <li><a href="#/profile/password">Change Password</a></li>
+            <li><a href="#/projects">Projects</a></li>
+            <li><a ng-click="logout()">Logout</a></li>
+        </ul>
+    </div>
+</nav>

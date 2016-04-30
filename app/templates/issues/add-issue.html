@@ -1,0 +1,87 @@
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading" ng-if="authService">
+                <h3 class="panel-title">Add Issue</h3>
+            </div>
+            <div class="panel-body row">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-sm-1 col-sm-offset-1 control-label add-form">Title: </label>
+                            <div class="col-sm-8">
+                                <input type="text" ng-model="addIssueInProject.Title" required="required"
+                                       placeholder="Title"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-sm-1 col-sm-offset-1 control-label add-form">Project: </label>
+                            <div class="col-sm-8">
+                                <select name="project-name" class="form-control"
+                                        ng-options="project.Id as project.Name for project in projectsData | unique: 'Name'"
+                                        ng-model="addIssueInProject.ProjectId">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="col-sm-1 col-sm-offset-1 control-label add-form">AssigneeId: </label>
+                            <div class="col-sm-8">
+                                <select class="form-control"
+                                        ng-options="user.Id as user.Username for user in usersName"
+                                        ng-model="addIssueInProject.AssigneeId">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-1 ">
+                        <label class="col-sm-1 col-sm-offset-1 control-label fixed-description-form">Description</label>
+                    </div>
+                    <div class="col-lg-10">
+                        <textarea class="form-control text-area-description" ng-model="addIssueInProject.Description"
+                                  rows="3" id="textArea"></textarea>
+                    </div>
+                    <div class="col-lg-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 margin-top-label">
+                        <div class="form-group">
+                            <label class="col-sm-1 col-sm-offset-1 control-label add-form">DueDate: </label>
+                            <div class="col-sm-8">
+                                <input type="date"
+                                       ng-model="addIssueInProject.DueDate"
+                                       required="required"
+                                       placeholder="DueDate"
+                                       class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 margin-top-label">
+                        <div class="form-group">
+                            <label class="col-sm-1 col-sm-offset-1 control-label add-form">PriorityId: </label>
+                            <div class="col-sm-9">
+                                <select class="form-control" ng-model="addIssueInProject.PriorityId">
+                                    <option value="1">Low</option>
+                                    <option value="2">Urgent</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center-block button-fix-center">
+                    <a ng-click="addIssue(addIssueInProject)" class="btn btn-success fix-center">Create Issue</a>
+                    <a href="#/projects" class="btn btn-warning">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>

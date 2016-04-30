@@ -1,0 +1,124 @@
+﻿body {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.center-view {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.panel-title, h1 {
+    text-align: center;
+}
+
+.form-group {
+    margin: 0 15px;
+}
+
+.text-area-description {
+    width: 840px;
+    margin: 20px 0 0 15px;
+}
+
+.margin-top-label {
+    margin-top: 20px;
+}
+
+.add-form {
+    margin: 10px 45px 0 0;
+    padding: 0;
+}
+
+.fixed-description-form {
+    margin: 20px 0 0 0;
+}
+
+.inline-edit-block {
+    display: -webkit-box;
+    width: 280px;
+    margin: 0 auto;
+}
+
+.author {
+    margin: 20px 0 20px 0;
+    color: #00b3ee;
+    font-size: 1.1em;
+    display: inline;
+}
+
+.form {
+    margin-bottom: 40px;
+}
+
+.title {
+    margin-top: 15px;
+}
+
+.title-id {
+    width: 160px;
+    margin-left: 40px;
+    padding: 0;
+
+}
+
+.title-id-danger {
+    width: 300px;
+    margin: 0 0 0 28px;
+
+}
+
+.form-id-danger {
+    margin-bottom: 40px;
+}
+
+.form-id {
+    margin-left: 128px;
+    margin-bottom: 40px;
+}
+
+.fixed-description {
+    width: 500px;
+}
+
+.due-date {
+    width: 100px;
+}
+
+.margin-button:last-child {
+    margin-left: 20px;
+}
+
+.container {
+    margin: 0;
+}
+
+.center-block {
+
+    width: 150px;
+    height: auto;
+}
+
+.button-fix-center {
+    margin: 25px 325px 0 350px;
+    width: 300px;
+}
+
+a {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.fix-center {
+    margin-right: 110px;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+footer p {
+    margin-top: 15px;
+    text-align: center;
+    color: #f9f2f4;
+}

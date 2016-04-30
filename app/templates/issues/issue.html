@@ -1,0 +1,76 @@
+<div class="row">
+    <h1>{{pageTitle}}</h1>
+
+
+    <div class="col-lg-7" ng-cloak="readyIssueDownload">
+
+        <div class="inline-edit-block">
+            <h1>{{promiseIssue.IssueKey}}</h1>
+            <a ng-controller="EditController" ng-click="issueProjectEdit(issueProject, promiseIssue, projectService.Id)"
+               class="btn btn-success margin-button">Edit</a>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 col-sm-offset-3 control-label title"><span>Title</span></label>
+            <div class="col-sm-6 form">
+                <input type="text" ng-model="issueProject.Title" placeholder="{{promiseIssue.Title}}"
+                       class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 col-sm-offset-3 control-label title"><span>Description</span></label>
+            <div class="col-sm-6 form">
+                <input type="text" ng-model="issueProject.Description"
+                       placeholder="{{promiseIssue.Description}}"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-sm-offset-3 control-label title-id-danger"><span>AssigneeId (current id: {{promiseIssue.Assignee.Id}})</span></label>
+            <div class="col-sm-6 form-id-danger">
+                <input type="text"
+                       ng-model="issueProject.Assignee.Id"
+                       placeholder="{{promiseIssue.Assignee.Username}}"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-sm-offset-3 control-label title-id"><span>PriorityId (current id: {{promiseIssue.Priority.Id}})</span></label>
+            <div class="col-sm-6 form-id">
+                <input type="text"
+                       ng-model="issueProject.Project.Id"
+                       placeholder="{{promiseIssue.Priority.Name}}"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 col-sm-offset-3 control-label title"><span>DueDate</span></label>
+            <div class="col-sm-6 formId">
+                <input type="text" ng-model="issueProject.DueDate" placeholder="{{promiseIssue.DueDate}}"
+
+                       class="form-control"/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-2">
+        <div>
+            <p class="author">Author:
+            <p>{{promiseIssue.Author.Username}}</p></p>
+            <p class="author">Project:
+            <p>{{promiseIssue.Project.Name}}</p></p>
+            <p class="author">Status:
+            <p>{{promiseIssue.Status.Name}}</p></p>
+            <p class="author">Labels: </p>
+        </div>
+    </div>
+
+    <div class="col-lg-2">
+        <a ng-click="openButton(promiseIssue.Id, promiseIssue.Status.Name)" class="btn btn-success margin-button">Open</a>
+        <a ng-click="closeButton(promiseIssue.Id, promiseIssue.Status.Name)" class="btn btn-success margin-button">Close</a>
+        <a ng-click="inProgresButton(promiseIssue.Id, promiseIssue.Status.Name)" class="btn btn-success">In Progress</a>
+        <a ng-click="resolvedButton(promiseIssue.Id, promiseIssue.Status.Name)" class="btn btn-success">Resolved</a>
+    </div>
+</div>

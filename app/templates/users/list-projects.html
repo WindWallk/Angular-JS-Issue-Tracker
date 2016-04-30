@@ -1,0 +1,43 @@
+<div ng-if="readyListProject">
+    <h1>Project Filter</h1>
+    <div class="center-block">
+        <select class="form-control" ng-options="project.Name for project in projects | unique: 'Name'" ng-model="selected"
+                ng-click="selectedName(selected)">
+
+        </select>
+
+
+    </div>
+    <div ng-show="readyDownload">
+        <div class="row">
+            <div class="col-md-2">
+                <a ng-if="authService.isLead()" ng-click="addButton(selected.Id)" class="btn btn-info">Add issue</a>
+            </div>
+            <div class="col-md-8">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Project</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="issue in issues | filter: nameProject.Name">
+                        <td><p>{{issue.Title}}</p></td>
+                        <td><p class="fixed-description">{{issue.Description}}</p></td>
+                        <td><p>{{issue.Project.Name }}</p></td>
+                        <td><p class="due-date">{{issue.DueDate | date : 'dd-MM-yyyy'}}</p></td>
+                        <td><p>{{issue.Status.Name}}</p></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+    </div>
+</div>

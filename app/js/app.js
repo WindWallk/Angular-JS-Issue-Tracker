@@ -9,5 +9,10 @@ var app = angular.module('issueTrackingSystemApp', [
 app.constant('baseServiceUrl', 'http://softuni-issue-tracker.azurewebsites.net/');
 
 app.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/'});
+    $routeProvider.when('/', {
+      templateUrl: 'templates/home.html',
+      controller: 'HomeController'
+    });
+  
+    $routeProvider.otherwise({redirectTo: '/'});
 }]);

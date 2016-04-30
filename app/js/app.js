@@ -1,12 +1,13 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('myApp', [
+var app = angular.module('issueTrackingSystemApp', [
   'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  'angular.filter'
+]);
+
+app.constant('baseServiceUrl', 'http://softuni-issue-tracker.azurewebsites.net/');
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.otherwise({redirectTo: '/'});
 }]);

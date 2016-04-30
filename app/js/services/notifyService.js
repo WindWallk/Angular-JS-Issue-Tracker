@@ -7,28 +7,39 @@ app.factory('notifyService',
                 text: msg,
                 type: 'success',
                 layout: 'topCenter',
-                timeout: 1000}
-            );
+                timeout: 2000,
+                closeWith: ['click'],
+                theme:'relax'
+            });
         }
-        function showError(message, serverError) {
+        function showError(msg, serverError) {
             var errors = [];
-            if (serverError && serverError.message) {
-                errors.push(serverError.message);
-            }
             if (serverError && serverError.error_description) {
-                var modelStateErrors = serverError.error_description;
-                errors.push(modelStateErrors);
+                errors.push(serverError.error_description);
+            }
+            if (serverError && serverError.modelState) {
+                var modelStateErrors = serverError.modelState;
+                for (var propertyName in modelStateErrors) {
+                    var errorMessages = modelStateErrors[propertyName];
+                    var trimmedName = propertyName.substr(propertyName.indexOf('.') + 1);
+                    for (var i = 0; i < errorMessages.length; i++) {
+                        var currentError = errorMessages[i];
+                        errors.push(trimmedName + ' - ' + currentError);
+                    }
+                }
             }
             if (errors.length > 0) {
-                message = message + "<br>" + errors.join("<br>");
+                msg = msg + ":<br>" + errors.join("<br>");
             }
             noty({
-                text: message,
+                text: msg,
                 type: 'error',
-                layout: 'topCenter',
-                timeout: 5000}
-            );
+                timeout: 2000,
+                closeWith: ['click'],
+                theme:'relax'
+            });
         }
+        
         return {
             showSuccess: showSuccess,
             showError: showError

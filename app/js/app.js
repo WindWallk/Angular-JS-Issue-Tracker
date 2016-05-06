@@ -34,6 +34,11 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'templates/admins/make-admin.html',
         controller: 'MakeAdminController'
     });
+
+    $routeProvider.when('/admin/panel', {
+        templateUrl: 'templates/admins/admin-panel.html',
+        controller: 'AdminPanelController'
+    });
   
     $routeProvider.otherwise({redirectTo: '/'});
 }]);

@@ -1,9 +1,8 @@
 'use strict';
 
 app.factory('userService', 
-    ['$http', 'baseServiceUrl', 'authenticationService',
-        function ($http, baseServiceUrl, authenticationService) {
-            var isAdmin = false;
+    ['$http', 'baseServiceUrl', 'authenticationService', '$location',
+        function ($http, baseServiceUrl, authenticationService, $location) {
 
             function login(user) {
                 user.grant_type = 'password';
@@ -35,6 +34,8 @@ app.factory('userService',
                     url: baseServiceUrl + 'api/Account/logout',
                     headers: authenticationService.getUserHeaderFromLocalStorage()
                 };
+
+                authenticationService.clearUserStorage();
 
                 return $http(request);
             }
@@ -89,7 +90,7 @@ app.factory('userService',
 
                 var promise = $http(request);
                 promise.then(function (admin) {
-                    isAdmin = admin.data;
+                    localStorage['isAdmin'] = admin.data.isAdmin;
                 });
                 return promise;
             }
@@ -123,18 +124,8 @@ app.factory('userService',
                 return isLead;
             }
 
-
-            function setLocalStorageIsNormalUser() {
-                localStorage['isNormal'] = isLoggedIn() && (!isAdminUser()) && (!isProjectLead());
-
-            }
-
             function isAdminUser() {
-                return isAdmin.isAdmin;
-            }
-
-            function isNormalUser() {
-                return localStorage['isNormal'] == 'true';
+                return localStorage['isAdmin'] == true;
             }
 
             function getAuthHeaders() {
@@ -147,12 +138,10 @@ app.factory('userService',
                 logout: logout,
                 isAnonymous: isAnonymous,
                 isLoggedIn: isLoggedIn,
-                isNormalUser: isNormalUser,
                 isAdminUser: isAdminUser,
                 getAuthHeaders: getAuthHeaders,
                 makeAdmin: makeAdmin,
                 changePassword: changePassword,
-                setLocalStorageIsNormalUser: setLocalStorageIsNormalUser,
                 isProjectLead: isProjectLead,
                 getAllUsers: getAllUsers,
                 getAllUsersByFilter: getAllUsersByFilter,

@@ -18,6 +18,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#/">Dashboard</a></li>
+            <li><a ng-if="userService.isAdminUser()" href="#/admin/panel">Admin Panel</a></li>
             <li><a href="#/profile/password">Change Password</a></li>
             <li><a href="#/projects">Projects</a></li>
             <li><a ng-click="logout()">Logout</a></li>

@@ -1,0 +1,9 @@
+<div>
+    <h1>Make Admin Panel</h1>
+    <div class="center-block">
+        <select class="form-control" ng-options="username.Id as username.Username for username in allUsernames | unique: 'Name'"
+                ng-model="userId">
+        </select>
+        <a ng-click="selectedUserId(userId)" class="btn btn-primary">Make admin</a>
+    </div>
+</div>

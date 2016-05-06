@@ -3,6 +3,8 @@
 app.factory('userService', 
     ['$http', 'baseServiceUrl', 'authenticationService',
         function ($http, baseServiceUrl, authenticationService) {
+            var isAdmin = false;
+
             function login(user) {
                 user.grant_type = 'password';
                 var request = {
@@ -67,7 +69,7 @@ app.factory('userService',
             function makeAdmin(userId) {
                 var headerToken = authenticationService.getUserHeaderFromLocalStorage();
                 var request = {
-                    method: 'POST',
+                    method: 'PUT',
                     url: baseServiceUrl + 'users/makeadmin',
                     data: {'UserId': userId},
                     headers: headerToken
@@ -85,12 +87,11 @@ app.factory('userService',
                     headers: headerToken
                 };
 
-                var isAdmin = false;
-                $http(request).then(function (admin) {
+                var promise = $http(request);
+                promise.then(function (admin) {
                     isAdmin = admin.data;
                 });
-
-                return isAdmin;
+                return promise;
             }
 
             function changePassword(changePassword) {
@@ -122,14 +123,14 @@ app.factory('userService',
                 return isLead;
             }
 
-            function isAdminUser() {
-                var currentUserIsAdmin = userInfo();
-                return currentUserIsAdmin.isAdmin;
-            }
 
             function setLocalStorageIsNormalUser() {
                 localStorage['isNormal'] = isLoggedIn() && (!isAdminUser()) && (!isProjectLead());
 
+            }
+
+            function isAdminUser() {
+                return isAdmin.isAdmin;
             }
 
             function isNormalUser() {
@@ -154,6 +155,7 @@ app.factory('userService',
                 setLocalStorageIsNormalUser: setLocalStorageIsNormalUser,
                 isProjectLead: isProjectLead,
                 getAllUsers: getAllUsers,
-                getAllUsersByFilter: getAllUsersByFilter
+                getAllUsersByFilter: getAllUsersByFilter,
+                userInfo: userInfo
             }
         }]);

@@ -29,6 +29,11 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'templates/users/change-password.html',
         controller: 'ProfilePasswordController'
     });
+
+    $routeProvider.when('/make/admin', {
+        templateUrl: 'templates/admins/make-admin.html',
+        controller: 'MakeAdminController'
+    });
   
     $routeProvider.otherwise({redirectTo: '/'});
 }]);

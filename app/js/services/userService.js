@@ -20,7 +20,7 @@ app.factory('userService',
             function register(user) {
                 var request = {
                     method: 'POST',
-                    url: baseServiceUrl + 'api/Account/Register',
+                    url: baseServiceUrl + 'api/account/register',
                     data: user
                 };
 

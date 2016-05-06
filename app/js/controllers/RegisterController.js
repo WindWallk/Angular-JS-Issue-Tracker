@@ -15,6 +15,9 @@ app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'user
                             var welcomeMessage = 'Welcome ' + success.data.userName +'!';
                             notifyService.showSuccess(registerMessage + "</br>" + welcomeMessage)
                             $location.path('/');
+                        }, function (error) {
+                            console.log(error);
+                            notifyService.showError('Register failed:', error.data)
                         })
                 });
             }

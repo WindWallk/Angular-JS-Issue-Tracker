@@ -7,7 +7,7 @@ app.controller('AdminPanelController', ['$scope', '$timeout', '$location','issue
             $location.path('/');
         }
         
-        if(localStorage['isAdmin'] != true) {
+        if(localStorage['isAdmin'] != 'true') {
             notifyService.showError('You are not an admin!');
             $location.path('/');
         }

@@ -125,7 +125,7 @@ app.factory('userService',
             }
 
             function isAdminUser() {
-                return localStorage['isAdmin'] == true;
+                return localStorage['isAdmin'] == 'true';
             }
 
             function getAuthHeaders() {

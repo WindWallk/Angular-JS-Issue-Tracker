@@ -8,7 +8,7 @@ app.controller('MakeAdminController', ['$scope', '$timeout', '$location', 'userS
             $location.path('/');
         }
 
-        if(localStorage['isAdmin'] != true) {
+        if(localStorage['isAdmin'] != 'true') {
             notifyService.showError('You are not an admin!');
             $location.path('/');
         }

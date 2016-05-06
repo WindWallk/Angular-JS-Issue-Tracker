@@ -127,7 +127,7 @@ app.factory('userService',
                 return currentUserIsAdmin.isAdmin;
             }
 
-            function setLocalStorageIsNormal() {
+            function setLocalStorageIsNormalUser() {
                 localStorage['isNormal'] = isLoggedIn() && (!isAdminUser()) && (!isProjectLead());
 
             }
@@ -151,7 +151,7 @@ app.factory('userService',
                 getAuthHeaders: getAuthHeaders,
                 makeAdmin: makeAdmin,
                 changePassword: changePassword,
-                setLocalStorageIsNormal: setLocalStorageIsNormal,
+                setLocalStorageIsNormalUser: setLocalStorageIsNormalUser,
                 isProjectLead: isProjectLead,
                 getAllUsers: getAllUsers,
                 getAllUsersByFilter: getAllUsersByFilter

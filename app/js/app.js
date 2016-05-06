@@ -24,6 +24,11 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'templates/register.html',
         controller: 'RegisterController'
     });
+
+    $routeProvider.when('/profile/password', {
+        templateUrl: 'templates/users/change-password.html',
+        controller: 'ProfilePasswordController'
+    });
   
     $routeProvider.otherwise({redirectTo: '/'});
 }]);

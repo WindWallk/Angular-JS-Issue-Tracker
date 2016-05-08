@@ -90,7 +90,9 @@ app.factory('userService',
 
                 var promise = $http(request);
                 promise.then(function (admin) {
-                    localStorage['isAdmin'] = admin.data.isAdmin;
+                    var isAdmin = admin.data.isAdmin;
+                    localStorage['isAdmin'] = isAdmin;
+                    localStorage['isNormal'] = !isAdmin && !isProjectLead();
                 });
                 return promise;
             }
@@ -128,6 +130,10 @@ app.factory('userService',
                 return localStorage['isAdmin'] == 'true';
             }
 
+            function isNormalUser() {
+                return localStorage['isNormal'] == 'true';
+            }
+
             function getAuthHeaders() {
                 authenticationService.getUserHeaderFromLocalStorage();
             }
@@ -145,6 +151,7 @@ app.factory('userService',
                 isProjectLead: isProjectLead,
                 getAllUsers: getAllUsers,
                 getAllUsersByFilter: getAllUsersByFilter,
-                userInfo: userInfo
+                userInfo: userInfo,
+                isNormalUser: isNormalUser
             }
         }]);

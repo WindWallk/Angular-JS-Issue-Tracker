@@ -49,7 +49,7 @@
     </div>
 </div>
 
-<div class="container" ng-if="authService.isLead()">
+<div class="container" ng-if="userService.isProjectLead() || userService.isAdminUser()">
     <div ng-controller="DashboardController" >
         <div class="row">
             <div class="col-md-3"></div>

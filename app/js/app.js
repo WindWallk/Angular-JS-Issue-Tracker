@@ -44,6 +44,11 @@ app.config(['$routeProvider', function($routeProvider) {
         templateUrl: 'templates/admins/add-project.html',
         controller: 'AddProjectController'
     });
+
+    $routeProvider.when('/projects', {
+        templateUrl: 'templates/users/list-projects.html',
+        controller: 'ProjectsController'
+    });
   
     $routeProvider.otherwise({redirectTo: '/'});
 }]);
